@@ -1,0 +1,66 @@
+.mic-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+.speaking {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(123, 121, 121, 0.89); */
+  border: 1px solid #fff;
+  z-index: -1;
+  border-radius: 50%;
+  animation: animateVoiceAssistant 0.8s infinite;
+  /* display: none; */
+}
+
+@keyframes animateVoiceAssistant {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+.speaking2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(123, 121, 121, 0.89); */
+  border: 1px solid #fff;
+  z-index: -1;
+  border-radius: 50%;
+  animation: animateVoiceAssistant2 0.8s alternate-reverse infinite;
+  /* display: none; */
+}
+
+@keyframes animateVoiceAssistant2 {
+  0% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.info-front {
+  animation: animateInfoText 1s infinite;
+}
+
+@keyframes animateInfoText {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      src="https://kit.fontawesome.com/a50954a027.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="root">
+      <div
+        class="preloader"
+        style="
+          position: fixed;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          left: 0;
+          background: #000;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: sans-serif;
+        "
+      >
+        <p>Loading...</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      const speechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition || null;
+      const recognition = speechRecognition ? new speechRecognition() : null;
+
+      const synthesis = window.speechSynthesis;
+      const speak = (text) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        utterance.rate = 1;
+        utterance.pitch = 1;
+        synthesis.speak(utterance);
+      };
+
+      window.onload = () => {
+        speak(
+          "Welcome to Raman Sharma's portfolio website. I am Voicey, your personal assistant. Please tell me your name to begin."
+        );
+      };
+    </script>
+  </body>
+</html>
