@@ -24,6 +24,7 @@ const useSpeechSynthesis = (props: IProps = {}) => {
   const handleEnd = () => {
     setSpeaking(false);
     // callbackFunctions[0](false);
+    callbackFunctions[0]("");
     onEnd();
   };
 
@@ -45,9 +46,6 @@ const useSpeechSynthesis = (props: IProps = {}) => {
     if (!supported) return;
 
     setSpeaking(true);
-    // callbackFunctions[0](true);
-    // callbackFunctions[0](true);
-    callbackFunctions[0](text);
 
     // Firefox won't repeat an utterance that has been
     // spoken, so we need to create a new instance each time
