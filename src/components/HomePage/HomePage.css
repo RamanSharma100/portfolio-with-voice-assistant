@@ -1,0 +1,216 @@
+.home .banner {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #111;
+  overflow: hidden !important;
+}
+.home .banner::before {
+  position: absolute;
+  content: "";
+  height: 100px;
+  width: 160%;
+  background: rgb(60, 200, 255);
+  right: -250px;
+  bottom: -100px;
+  transform: rotate(-30deg);
+  z-index: 1;
+}
+.home .banner::after {
+  position: absolute;
+  content: "";
+  height: 100px;
+  width: 160%;
+  background: rgb(200, 60, 255);
+  right: -280px;
+  bottom: -100px;
+  transform: rotate(-30deg);
+  z-index: 0;
+}
+.home .banner .glichesBanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.home .banner .glichesBanner .glitch {
+  position: absolute;
+  background: #aaa;
+}
+.home .banner .imageBanner {
+  position: absolute;
+  height: 60%;
+  width: 300px;
+  right: 15%;
+  bottom: 0;
+  z-index: 1;
+  /*overflow: hidden;*/
+}
+.home .banner .imageBanner img {
+  position: absolute;
+  top: 100%; /*-15%*/
+  left: -50%;
+  height: 160%;
+  width: 230%;
+  z-index: 2;
+}
+.home .banner .imageBanner .glitchBox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  overflow: hidden;
+}
+.home .banner .imageBanner .glitchBox .gliches {
+  position: absolute;
+  background: #111;
+}
+.home .banner .info {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: #fff;
+}
+.home .banner .info h1.bannerHeading {
+  position: relative;
+  font-family: "Stylish", sans-serif;
+  text-transform: capitalize;
+  font-size: 4.5rem;
+  left: -180%;
+}
+.home .banner .info h1.bannerHeading::before {
+  position: absolute;
+  content: attr(data-text);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 10px;
+  mix-blend-mode: hue;
+  color: rgb(200, 60, 255);
+  animation: animateHeadingBeforeBanner 0.3s linear infinite;
+}
+.home .banner .info h1.bannerHeading::after {
+  position: absolute;
+  content: attr(data-text);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 10px;
+  mix-blend-mode: hue;
+  color: rgb(60, 200, 255);
+  animation: animateHeadingBeforeBanner 0.5s linear reverse infinite;
+}
+.home .banner .info .bannerSubHeading {
+  position: relative;
+  font-size: 2.5rem;
+  font-family: "Cedarville Cursive", cursive;
+  padding: 10px 0;
+  left: -180%;
+}
+.home .banner .info .btns {
+  position: relative;
+  top: 25px;
+}
+.home .banner .info .btns a {
+  position: relative;
+  border-bottom: 3px solid #fff;
+  padding: 10px 25px;
+  text-decoration: none;
+  color: #fff;
+  left: -180%;
+}
+.home .banner .info .btns a:nth-child(2) {
+  background: rgba(44, 62, 80, 1);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  left: -180%;
+}
+.home .banner .info .btns a::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    transparent,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent,
+    transparent,
+    transparent
+  );
+  transition: 0.1s linear;
+}
+.home .banner .info .btns a::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(44, 62, 80, 1);
+  transition: 0.3s linear;
+  z-index: -1;
+}
+.home .banner .info .btns a:hover::after {
+  width: 100%;
+}
+.home .banner .info .btns a:hover::before {
+  width: 100%;
+}
+.home .banner .socialIcons {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+}
+.home .banner .socialIcons a {
+  position: relative;
+  /*border:1px solid rgba(255, 255, 255, 0.5);*/
+  padding: 10px 20px;
+  margin-right: 5px;
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: 550;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: 0.3s linear;
+  left: -180%;
+}
+.home .banner .socialIcons a::before {
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: rgba(255, 255, 255, 0.5);
+  transition: 0.3s linear;
+}
+.home .banner .socialIcons a:nth-child(1) i {
+  position: relative;
+  right: 5px;
+}
+.home .banner .socialIcons a:hover::before {
+  width: 100%;
+}
+.home .banner .socialIcons a:nth-child(1) i {
+  position: relative;
+  right: 5px;
+}
+.home .banner .socialIcons a:nth-child(1):hover {
+  background: #bb0000;
+}
+.home .banner .socialIcons a:nth-child(2):hover {
+  background: #007bb6;
+}
+.home .banner .socialIcons a:nth-child(3):hover {
+  background: #3b5998;
+}
+.home .banner .socialIcons a:nth-child(4):hover {
+  background: #00aced;
+}

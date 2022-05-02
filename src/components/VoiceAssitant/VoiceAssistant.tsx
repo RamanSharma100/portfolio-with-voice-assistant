@@ -19,6 +19,7 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({}: IVoiceAssitant) => {
   const [name, setName] = useState<string>("");
 
   const frontRef = useRef(null);
+  const frontBackRef = useRef(null);
   const flotIconRef = useRef(null);
   const frontInputRef = useRef(null);
   const frontTextRef = useRef(null);
@@ -66,12 +67,75 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({}: IVoiceAssitant) => {
           y: "-100%",
           ease: Expo.easeOut,
         })
-        .then(() => {
-          setEnableFront(false);
-          setText(`Hello ${name}!, Welcome here!`);
-          speak({
-            text: `Hello ${name}!, Welcome here!`,
+        .then((): void => {
+          gsap.to(frontBackRef.current, {
+            duration: 0.5,
+            y: "-100%",
+            ease: Expo.easeOut,
+            delay: 0.2,
           });
+          gsap.to(".home .banner .imageBanner img", {
+            duration: 0.5,
+            delay: 0.7,
+            top: "-15%",
+            ease: "expo.inOut",
+          });
+          gsap.to(".home .banner .info h1.bannerHeading", {
+            duration: 0.5,
+            delay: 1.2,
+            left: "0",
+            ease: "expo.inOut",
+          });
+          gsap.to(".home .banner .info .bannerSubHeading", {
+            duration: 0.5,
+            delay: 1.7,
+            left: "0",
+            ease: "expo.inOut",
+          });
+          gsap.to(".home .banner .info .btns a:nth-child(2)", {
+            duration: 0.5,
+            delay: 2.2,
+            left: "0",
+            ease: "expo.inOut",
+          });
+          gsap.to(".home .banner .info .btns a:nth-child(1)", {
+            duration: 0.5,
+            delay: 2.7,
+            left: "0",
+            ease: "expo.inOut",
+          });
+          gsap.to(".home .banner .socialIcons a:nth-child(4)", {
+            duration: 0.5,
+            delay: 3.2,
+            left: "0",
+            ease: "expo.inOut",
+          });
+          gsap.to(".home .banner .socialIcons a:nth-child(3)", {
+            duration: 0.5,
+            delay: 3.7,
+            left: "0",
+            ease: "expo.inOut",
+          });
+          gsap.to(".home .banner .socialIcons a:nth-child(2)", {
+            duration: 0.5,
+            delay: 4.2,
+            left: "0",
+            ease: "expo.inOut",
+          });
+          gsap
+            .to(".home .banner .socialIcons a:nth-child(1)", {
+              duration: 0.5,
+              delay: 4.7,
+              left: "0",
+              ease: "expo.inOut",
+            })
+            .then((): void => {
+              setEnableFront(false);
+              setText(`Hello ${name}!, Welcome here!`);
+              speak({
+                text: `Hello ${name}!, Welcome here!`,
+              });
+            });
         });
     } else {
       toast.info("Invalid name!");
@@ -114,60 +178,67 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({}: IVoiceAssitant) => {
 
   if (enableFront) {
     return (
-      <div
-        ref={frontRef}
-        className="w-100 h-100 position-fixed top-0 left-0 bg-black d-flex flex-column pt-5 align-items-center"
-        style={{ zIndex: 9 }}
-      >
-        <div className="mic-container position-relative bg-primary mb-4 d-flex align-items-center justify-content-center mt-5 rounded-circle ">
-          <i
-            className="fas fa-microphone-alt text-white"
-            style={{ fontSize: "10rem" }}
-          ></i>
+      <>
+        <div
+          className="front-back-dev position-fixed top-0 left-0 h-100 w-100 bg-primary"
+          style={{ zIndex: 8 }}
+          ref={frontBackRef}
+        ></div>
+        <div
+          ref={frontRef}
+          className="w-100 h-100 position-fixed top-0 left-0 bg-black d-flex flex-column pt-5 align-items-center"
+          style={{ zIndex: 9 }}
+        >
+          <div className="mic-container position-relative bg-primary mb-4 d-flex align-items-center justify-content-center mt-5 rounded-circle ">
+            <i
+              className="fas fa-microphone-alt text-white"
+              style={{ fontSize: "10rem" }}
+            ></i>
 
-          <div
-            className={`${speaking || isSpeaking ? "speaking" : "d-none"}`}
-          ></div>
-          <div
-            className={`${speaking || isSpeaking ? "speaking2" : "d-none"}`}
-          ></div>
-        </div>
-        <h1 className="display-1 fw-bold text-white"> Voicey </h1>
-        <p className="my-3 text-white">
-          Welcome to Raman Sharma's portfolio website. I am Voicey, your
-          personal assistant. Please tell me your name to begin.
-        </p>
-        <>
-          <div
-            ref={frontInputRef}
-            className="d-flex w-50 px-5 mt-4 justify-content-center"
-            style={{ marginLeft: "-200%" }}
-          >
-            <input
-              type="text"
-              className="form-control rounded-0"
-              placeholder="Type your name here"
-              onChange={(e): void => setName(e.target.value)}
-              value={name}
-            />
-            <input
-              type="button"
-              className="btn btn-primary rounded-0 "
-              onClick={handleEnter}
-              value="Enter"
-            />
+            <div
+              className={`${speaking || isSpeaking ? "speaking" : "d-none"}`}
+            ></div>
+            <div
+              className={`${speaking || isSpeaking ? "speaking2" : "d-none"}`}
+            ></div>
           </div>
-          <p
-            ref={frontTextRef}
-            style={{ marginRight: "-200%" }}
-            className="text-secondary info-front mt-5"
-          >
-            {" "}
-            Enter your name in the field and hit enter button or say command "my
-            name is YOUR_NAME"
+          <h1 className="display-1 fw-bold text-white"> Voicey </h1>
+          <p className="my-3 text-white">
+            Welcome to Raman Sharma's portfolio website. I am Voicey, your
+            personal assistant. Please tell me your name to begin.
           </p>
-        </>
-      </div>
+          <>
+            <div
+              ref={frontInputRef}
+              className="d-flex w-50 px-5 mt-4 justify-content-center"
+              style={{ marginLeft: "-200%" }}
+            >
+              <input
+                type="text"
+                className="form-control rounded-0"
+                placeholder="Type your name here"
+                onChange={(e): void => setName(e.target.value)}
+                value={name}
+              />
+              <input
+                type="button"
+                className="btn btn-primary rounded-0 "
+                onClick={handleEnter}
+                value="Enter"
+              />
+            </div>
+            <p
+              ref={frontTextRef}
+              style={{ marginRight: "-200%" }}
+              className="text-secondary info-front mt-5"
+            >
+              {" "}
+              Enter your name in the field and hit enter button or say command
+              "my name is YOUR_NAME"
+            </p>
+          </>
+        </div>
+      </>
     );
   }
 

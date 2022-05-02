@@ -41,10 +41,6 @@
   animation: animateVoiceAssistant2 0.8s alternate-reverse infinite;
   /* display: none; */
 }
-.speaking4,
-.speaking3 {
-  border: 1px solid #000;
-}
 
 @keyframes animateVoiceAssistant2 {
   0% {
@@ -97,14 +93,15 @@
   right: 70%;
   text-align: center;
   font-size: 0.79rem;
-  color: #000;
+  color: rgb(255, 255, 255);
   font-weight: bold;
   width: 250px;
-  border: 1px solid #000;
+  border: 1px solid #fff;
   z-index: -1;
   border-radius: 10px;
   padding-top: 2px;
   padding-bottom: 2px;
   transition: 0.3s text ease;
   display: inline-block;
+  background-color: rgb(255, 255, 255);
 }

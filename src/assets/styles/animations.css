@@ -1,0 +1,10 @@
+@keyframes animateHeadingBeforeBanner {
+  0%,
+  100% {
+    left: -5px;
+  }
+  20%,
+  50% {
+    left: 5px;
+  }
+}

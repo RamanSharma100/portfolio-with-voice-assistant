@@ -1,8 +1,11 @@
 import { ToastContainer } from "react-toastify";
 import { recognition } from "./APIs/speechRecognitionAPI";
+
+import HomePage from "./components/HomePage/HomePage";
 import VoiceAssistant from "./components/VoiceAssitant/VoiceAssistant";
 
 import "./App.css";
+import "./assets/styles/animations.css";
 
 export default function App() {
   if (!recognition) {
@@ -12,7 +15,8 @@ export default function App() {
     <div className="container-fluid px-0">
       <ToastContainer />
       <VoiceAssistant />
-      <h1>hello world</h1>
+
+      <HomePage />
     </div>
   );
 }
