@@ -1,1 +1,4 @@
-export default interface IVoiceAssitant {}
+export default interface IVoiceAssitant {
+  enableFront: boolean;
+  setEnableFront(enableFront: boolean): void;
+}

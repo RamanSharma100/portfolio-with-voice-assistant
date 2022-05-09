@@ -8,13 +8,15 @@ import IVoiceAssitant from "./IvoiceAssitant";
 
 import "./VoiceAssistant.css";
 
-const VoiceAssistant: FC<IVoiceAssitant> = ({}: IVoiceAssitant) => {
+const VoiceAssistant: FC<IVoiceAssitant> = ({
+  enableFront,
+  setEnableFront,
+}: IVoiceAssitant) => {
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isStarted, setIsStarted] = useState<boolean>(false);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(true);
   const [gretted, setGretted] = useState<boolean>(false);
   const [text, setText] = useState<string>("");
-  const [enableFront, setEnableFront] = useState<boolean>(true);
 
   const [name, setName] = useState<string>("");
 
@@ -68,66 +70,12 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({}: IVoiceAssitant) => {
           ease: Expo.easeOut,
         })
         .then((): void => {
-          gsap.to(frontBackRef.current, {
-            duration: 0.5,
-            y: "-100%",
-            ease: Expo.easeOut,
-            delay: 0.2,
-          });
-          gsap.to(".home .banner .imageBanner img", {
-            duration: 0.5,
-            delay: 0.7,
-            top: "-15%",
-            ease: "expo.inOut",
-          });
-          gsap.to(".home .banner .info h1.bannerHeading", {
-            duration: 0.5,
-            delay: 1.2,
-            left: "0",
-            ease: "expo.inOut",
-          });
-          gsap.to(".home .banner .info .bannerSubHeading", {
-            duration: 0.5,
-            delay: 1.7,
-            left: "0",
-            ease: "expo.inOut",
-          });
-          gsap.to(".home .banner .info .btns a:nth-child(2)", {
-            duration: 0.5,
-            delay: 2.2,
-            left: "0",
-            ease: "expo.inOut",
-          });
-          gsap.to(".home .banner .info .btns a:nth-child(1)", {
-            duration: 0.5,
-            delay: 2.7,
-            left: "0",
-            ease: "expo.inOut",
-          });
-          gsap.to(".home .banner .socialIcons a:nth-child(4)", {
-            duration: 0.5,
-            delay: 3.2,
-            left: "0",
-            ease: "expo.inOut",
-          });
-          gsap.to(".home .banner .socialIcons a:nth-child(3)", {
-            duration: 0.5,
-            delay: 3.7,
-            left: "0",
-            ease: "expo.inOut",
-          });
-          gsap.to(".home .banner .socialIcons a:nth-child(2)", {
-            duration: 0.5,
-            delay: 4.2,
-            left: "0",
-            ease: "expo.inOut",
-          });
           gsap
-            .to(".home .banner .socialIcons a:nth-child(1)", {
+            .to(frontBackRef.current, {
               duration: 0.5,
-              delay: 4.7,
-              left: "0",
-              ease: "expo.inOut",
+              y: "-100%",
+              ease: Expo.easeOut,
+              delay: 0.2,
             })
             .then((): void => {
               setEnableFront(false);
