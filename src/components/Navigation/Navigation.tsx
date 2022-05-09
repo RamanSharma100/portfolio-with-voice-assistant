@@ -1,5 +1,6 @@
 import { FunctionComponent as FC } from "react";
 import gsap, { Power3 } from "gsap";
+import { Link } from "react-router-dom";
 
 import INavigation from "./Inavigation";
 
@@ -63,7 +64,23 @@ const Navigation: FC<INavigation> = ({}) => {
             Close
           </p>
         </div>
-        Hello
+
+        <nav>
+          <ul className="navigation-list">
+            <li className="navigation-list-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="navigation-list-item">
+              <Link to="/portfolio">Portfolio</Link>
+            </li>
+            <li className="navigation-list-item">
+              <Link to="/about">About</Link>
+            </li>
+            <li className="navigation-list-item">
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </>
   );

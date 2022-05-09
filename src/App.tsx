@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { recognition } from "./APIs/speechRecognitionAPI";
+import { Route, Routes } from "react-router-dom";
 
 import HomePage from "./components/HomePage/HomePage";
 import VoiceAssistant from "./components/VoiceAssitant/VoiceAssistant";
@@ -25,7 +26,9 @@ export default function App() {
           setEnableFront={setEnableFront}
           enableFront={enableFront}
         />
-        <HomePage />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
       </div>
     </>
   );
