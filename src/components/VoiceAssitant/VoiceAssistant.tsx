@@ -3,6 +3,10 @@ import { toast } from "react-toastify";
 import gsap, { Expo } from "gsap";
 
 import { recognition } from "../../APIs/speechRecognitionAPI";
+import {
+  IVoiceCommandsDataJSON,
+  voiceCommandsDataJSON,
+} from "../../data/voiceComands";
 import useSpeechSynthesis from "../../hooks/useSpeechSynthesis";
 import IVoiceAssitant from "./IvoiceAssitant";
 
@@ -12,6 +16,10 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
   enableFront,
   setEnableFront,
 }: IVoiceAssitant) => {
+  const {
+    name: { responses },
+  }: IVoiceCommandsDataJSON = voiceCommandsDataJSON;
+
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isStarted, setIsStarted] = useState<boolean>(false);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(true);
@@ -79,9 +87,16 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
             })
             .then((): void => {
               setEnableFront(false);
-              setText(`Hello ${name}!, Welcome here!`);
+
+              setText(
+                `${
+                  responses[Math.round(Math.random() * responses.length - 1)]
+                } ${name}!, Welcome here!`
+              );
               speak({
-                text: `Hello ${name}!, Welcome here!`,
+                text: `${
+                  responses[Math.round(Math.random() * responses.length - 1)]
+                } ${name}!, Welcome here!`,
               });
             });
         });
