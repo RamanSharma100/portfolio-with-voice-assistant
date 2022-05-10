@@ -65,19 +65,27 @@ const Navigation: FC<INavigation> = ({}) => {
           </p>
         </div>
 
-        <nav>
-          <ul className="navigation-list">
+        <nav className="mt-5 p-5 d-flex justify-content-center">
+          <ul className="navigation-list py-5">
             <li className="navigation-list-item">
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={handleMenuClosing}>
+                Home
+              </Link>
             </li>
             <li className="navigation-list-item">
-              <Link to="/portfolio">Portfolio</Link>
+              <Link to="/portfolio" onClick={handleMenuClosing}>
+                Portfolio
+              </Link>
             </li>
             <li className="navigation-list-item">
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={handleMenuClosing}>
+                About
+              </Link>
             </li>
             <li className="navigation-list-item">
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact" onClick={handleMenuClosing}>
+                Contact
+              </Link>
             </li>
           </ul>
         </nav>
