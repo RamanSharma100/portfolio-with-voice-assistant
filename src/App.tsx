@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage/HomePage";
 import VoiceAssistant from "./components/VoiceAssitant/VoiceAssistant";
 import Navigation from "./components/Navigation/Navigation";
 import Settings from "./components/Settings/Settings";
+import PortfolioPage from "./components/PortfolioPage/PortfolioPage";
 
 import "./App.css";
 import "./assets/styles/animations.css";
@@ -30,6 +31,7 @@ export default function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
         </Routes>
       </div>
     </>

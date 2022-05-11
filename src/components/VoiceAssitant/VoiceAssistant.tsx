@@ -88,15 +88,13 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
             .then((): void => {
               setEnableFront(false);
 
-              setText(
-                `${
-                  responses[Math.round(Math.random() * responses.length - 1)]
-                } ${name}!, Welcome here!`
-              );
+              const randomNo =
+                Math.round(Math.random() * responses.length) - 1 < 0
+                  ? 0
+                  : Math.round(Math.random() * responses.length) - 1;
+              setText(`${responses[randomNo]} ${name}!, Welcome here!`);
               speak({
-                text: `${
-                  responses[Math.round(Math.random() * responses.length - 1)]
-                } ${name}!, Welcome here!`,
+                text: `${responses[randomNo]} ${name}!, Welcome here!`,
               });
             });
         });
