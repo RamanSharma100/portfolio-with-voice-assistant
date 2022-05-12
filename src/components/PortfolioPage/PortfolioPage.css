@@ -1,6 +1,6 @@
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y center;
 }
 .portfolio-page {
   position: relative;
@@ -13,7 +13,7 @@ html {
   position: fixed;
   right: 0%;
   top: 35%;
-  z-index: 998;
+  z-index: 9;
   transform: rotate(90deg);
   display: flex;
   align-items: center;
