@@ -89,3 +89,17 @@ nav ul li:nth-child(2) a:hover::before {
   background-position: center;
   background-repeat: no-repeat;
 }
+nav ul li:nth-child(3) a:hover::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../../assets/images/aboutPage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+nav ul li:last-child a:hover::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../../assets/images/contactPage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

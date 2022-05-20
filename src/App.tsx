@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Settings from "./components/Settings/Settings";
 import PortfolioPage from "./components/PortfolioPage/PortfolioPage";
 import AboutPage from "./components/AboutPage/AboutPage";
+import ContactPage from "./components/ContactPage/ContactPage";
 
 import "./App.css";
 import "./assets/styles/animations.css";
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </>

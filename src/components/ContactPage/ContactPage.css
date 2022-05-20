@@ -1,0 +1,225 @@
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+body {
+  background: #000;
+  font-family: "Poppins", sans-serif;
+}
+.contactus .contactusBanner {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  scroll-snap-align: center;
+}
+.contactus .contactusBanner .cardBanner {
+  position: relative;
+  background: #000;
+  display: flex;
+  align-items: center;
+  height: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  overflow: hidden;
+}
+.contactus .contactusBanner .cardBanner .myImage {
+  position: relative;
+  height: 100%;
+  width: 30%;
+  overflow: hidden;
+  margin-right: 5px;
+}
+.contactus .contactusBanner .cardBanner .myImage::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 98%;
+  width: 98%;
+  border: 3px solid #000;
+  z-index: 2;
+}
+.contactus .contactusBanner .cardBanner .myImage img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.contactus .contactusBanner .cardBanner .contactME {
+  position: relative;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+.contactus .contactusBanner .cardBanner .contactME h1 {
+  position: relative;
+  height: 40%;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  font-weight: 800;
+  color: #000;
+  padding: 50px;
+  -webkit-text-stroke: 1px #000;
+  -webkit-text-fill-color: transparent;
+}
+.contactus .contactusBanner .cardBanner .contactME h1::before {
+  content: "Contact Me";
+  position: absolute;
+  margin-left: 5px;
+  -webkit-text-fill-color: #000;
+}
+.contactus .contactusBanner .cardBanner .contactME .contactInfo {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 10px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contactus .contactusBanner .cardBanner .contactME .contactInfo .info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 2px 0;
+  width: 100%;
+  height: 50px;
+}
+.contactus .contactusBanner .cardBanner .contactME .contactInfo .info p {
+  position: relative;
+  display: block;
+  border-right: 1px solid #000;
+  padding: 0px 15px;
+  text-align: left;
+  width: 150px;
+  background: #000;
+  color: #fff;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.contactus .contactusBanner .cardBanner .contactME .contactInfo .info .icons {
+  position: relative;
+  flex: 1;
+  text-align: right;
+  padding: 0 15px;
+}
+.contactus .contactusBanner .cardBanner .contactME .contactInfo .info .icons a {
+  color: #000;
+  font-weight: 800;
+}
+
+/* social icons  */
+.contactus .socialIcons {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: auto;
+  width: auto;
+  z-index: 9;
+}
+.contactus .socialIcons a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  font-size: 1.2rem;
+  transition: 0.3s background;
+}
+.contactus .socialIcons a::before {
+  content: "";
+  position: absolute;
+  height: 90%;
+  width: 98%;
+  border: 1px solid #fff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s border;
+}
+.contactus .socialIcons a:hover::before {
+  border-color: #000;
+}
+
+/* scroll down */
+.contactus .contactusBanner .arrowDown {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2%;
+  color: #fff;
+  font-size: 0.99rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  transition: 0.3s linear;
+}
+.contactus .contactusBanner .arrowDown a {
+  text-decoration: none;
+  color: #fff;
+}
+.contactus .contactusBanner .arrowDown i {
+  text-align: center;
+  transition: 0.3s linear;
+  animation: animateArrow 1s linear forwards infinite;
+}
+@keyframes animateArrow {
+  0% {
+    transform: translateY(-5px);
+  }
+}
+
+/* contact form  */
+.contactus .contactForm {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: center;
+  background: #000;
+}
+.contactus .contactForm form .form-group {
+  position: relative;
+  flex: 1;
+  margin: 5px;
+}
+.contactus .contactForm form .form-group textarea {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  resize: none;
+}
+.contactus .contactForm form .form-group textarea,
+.contactus .contactForm form .form-group input {
+  background: transparent;
+  color: #fff;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  margin: 2% 0 !important;
+}
+.contactus .contactForm form .form-group input {
+  height: 50px;
+  margin: 2% 0 !important;
+}
+
+/* scroll Bar */
+::-webkit-scrollbar {
+  display: none;
+}
