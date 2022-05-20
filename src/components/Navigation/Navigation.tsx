@@ -1,6 +1,6 @@
 import { FunctionComponent as FC } from "react";
-import gsap, { Power3 } from "gsap";
 import { Link } from "react-router-dom";
+import { handleMenuClosing, handleMenuOpening } from "./methods";
 
 import INavigation from "./Inavigation";
 
@@ -10,34 +10,6 @@ import CloseIcon from "../../assets/icons/closeIcon.svg";
 import "./Navigation.css";
 
 const Navigation: FC<INavigation> = ({}) => {
-  const handleMenuOpening = () => {
-    gsap.to(".navigation-back-container", {
-      duration: 0.3,
-      left: 0,
-      ease: Power3.easeInOut,
-    });
-    gsap.to(".navigation-container", {
-      duration: 0.3,
-      delay: 0.1,
-      left: 0,
-      ease: Power3.easeIn,
-    });
-  };
-
-  const handleMenuClosing = () => {
-    gsap.to(".navigation-container", {
-      duration: 0.3,
-      left: "100%",
-      ease: Power3.easeOut,
-    });
-    gsap.to(".navigation-back-container", {
-      duration: 0.3,
-      left: "100%",
-      delay: 0.5,
-      ease: Power3.easeInOut,
-    });
-  };
-
   return (
     <>
       <div

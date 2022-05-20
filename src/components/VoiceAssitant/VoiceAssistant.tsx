@@ -8,7 +8,10 @@ import {
   voiceCommandsDataJSON,
 } from "../../data/voiceComands";
 import useSpeechSynthesis from "../../hooks/useSpeechSynthesis";
+import { handleMenuClosing, handleMenuOpening } from "../Navigation/methods";
+
 import IVoiceAssitant from "./IvoiceAssitant";
+import checkCommands, { ICheckCommands } from "./checkCommands";
 
 import "./VoiceAssistant.css";
 
@@ -56,9 +59,9 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
           });
         });
 
-      // recognition.start();
-      // setIsStarted(true);
-      // setIsMuted(false);
+      recognition.start();
+      setIsStarted(true);
+      setIsMuted(false);
     }, 9510);
   }, []);
 
@@ -69,8 +72,8 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
     }
   }, [speaking]);
 
-  const handleEnter = () => {
-    if (name.length > 2) {
+  const handleEnter = (userName?: string) => {
+    if (name.length > 2 || (userName && userName.length > 2)) {
       gsap
         .to(frontRef.current, {
           duration: 0.5,
@@ -88,14 +91,18 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
             .then((): void => {
               setEnableFront(false);
 
-              const randomNo =
-                Math.round(Math.random() * responses.length) - 1 < 0
-                  ? 0
-                  : Math.round(Math.random() * responses.length) - 1;
-              setText(`${responses[randomNo]} ${name}!, Welcome here!`);
-              speak({
-                text: `${responses[randomNo]} ${name}!, Welcome here!`,
-              });
+              const randomNo = Math.floor(Math.random() * responses.length);
+              if (name) {
+                setText(`${responses[randomNo]} ${name}!, Welcome here!`);
+                speak({
+                  text: `${responses[randomNo]} ${name}!, Welcome here!`,
+                });
+              } else {
+                setText(`${responses[randomNo]} ${userName}!, Welcome here!`);
+                speak({
+                  text: `${responses[randomNo]} ${userName}!, Welcome here!`,
+                });
+              }
             });
         });
     } else {
@@ -112,12 +119,12 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
       setIsMuted(false);
       setText("started taking commands! How can i help you?");
       speak({ text: "started taking commands! How can i help you?" });
-      // recognition.start();
+      recognition.start();
     } else {
       setIsMuted(true);
       setText("stopped taking commands! Thank you!");
       speak({ text: "stopped taking commands! Thank you!" });
-      // recognition.stop();
+      recognition.stop();
     }
   };
 
@@ -128,12 +135,40 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
     setIsStarted(true);
   };
 
+  recognition.onresult = (event: any) => {
+    const command = event.results[0][0].transcript.toLowerCase();
+
+    const { commandAction, commandType, commandName }: ICheckCommands =
+      checkCommands(command);
+    if (commandAction && commandName) {
+      if (commandType === "name" && enableFront) {
+        setName(command.replace(commandName, "").trim());
+        handleEnter(command.replace(commandName, "").trim());
+      }
+      if (commandType === "openNavigation") {
+        handleMenuOpening();
+        setText((voiceCommandsDataJSON as any)[commandType].responses[0]);
+        speak({
+          text: (voiceCommandsDataJSON as any)[commandType].responses[0],
+        });
+      }
+      if (commandType === "closeNavigation") {
+        handleMenuClosing();
+        setText((voiceCommandsDataJSON as any)[commandType].responses[0]);
+        speak({
+          text: (voiceCommandsDataJSON as any)[commandType].responses[0],
+        });
+      }
+    }
+  };
+
   recognition.onend = () => {
     if (!isMuted) {
       recognition.start();
     } else {
       setIsStarted(false);
       setIsMuted(true);
+      recognition.stop();
     }
   };
 
@@ -184,7 +219,7 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
               <input
                 type="button"
                 className="btn btn-primary rounded-0 "
-                onClick={handleEnter}
+                onClick={() => handleEnter()}
                 value="Enter"
               />
             </div>

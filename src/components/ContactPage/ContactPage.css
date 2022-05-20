@@ -131,7 +131,7 @@ body {
   transform: translateY(-50%);
   height: auto;
   width: auto;
-  z-index: 9;
+  z-index: 1;
 }
 .contactus .socialIcons a {
   position: relative;
