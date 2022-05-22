@@ -14,6 +14,8 @@ import IVoiceAssitant from "./IvoiceAssitant";
 import checkCommands, { ICheckCommands } from "./checkCommands";
 
 import "./VoiceAssistant.css";
+import { useNavigate } from "react-router-dom";
+import { getRoutes } from "./methods";
 
 const VoiceAssistant: FC<IVoiceAssitant> = ({
   enableFront,
@@ -36,6 +38,8 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
   const flotIconRef = useRef(null);
   const frontInputRef = useRef(null);
   const frontTextRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const { speak, speaking, supported } = useSpeechSynthesis({
     callbackFunctions: [setText, setGretted],
@@ -157,6 +161,34 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
         setText((voiceCommandsDataJSON as any)[commandType].responses[0]);
         speak({
           text: (voiceCommandsDataJSON as any)[commandType].responses[0],
+        });
+      }
+      if (commandType === "navigation") {
+        const page = command
+          .toLowerCase()
+          .replace(commandName, "")
+          .trim()
+          .replace("page", "")
+          .replace("us", "")
+          .replace(".", "")
+          .trim();
+        if (["home", "index", "front"].includes(page)) {
+          navigate("/");
+        }
+        const allPages: string[] = getRoutes();
+        if (allPages.includes(page)) {
+          navigate(`/${page}`);
+        }
+
+        setText(
+          `${
+            (voiceCommandsDataJSON as any)[commandType].responses[0]
+          } ${page} page`
+        );
+        speak({
+          text: `${
+            (voiceCommandsDataJSON as any)[commandType].responses[0]
+          } ${page} page`,
         });
       }
     }

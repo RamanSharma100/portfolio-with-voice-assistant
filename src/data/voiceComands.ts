@@ -8,6 +8,8 @@ export interface IVoiceCommandsDataJSON {
   name: IVoiceCommandObject;
   openNavigation: IVoiceCommandObject;
   closeNavigation: IVoiceCommandObject;
+  navigation: IVoiceCommandObject;
+  questions: IVoiceCommandObject;
 }
 
 export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
@@ -25,5 +27,18 @@ export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
     commands: ["close navigation menu", "close menu"],
     responses: ["Closing navigation menu!"],
     actions: ["closeMenu"],
+  },
+  navigation: {
+    commands: ["navigate to ", "go to ", "show me ", "move to "],
+    responses: ["Navigated to "],
+    actions: ["navigation"],
+  },
+  questions: {
+    commands: ["how many pages ", "how many routes"],
+    responses: [
+      "There are * pages in this website",
+      "In this website * routes are available",
+    ],
+    actions: ["tellPages", "tellRoutes"],
   },
 };

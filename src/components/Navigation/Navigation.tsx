@@ -37,7 +37,7 @@ const Navigation: FC<INavigation> = ({}) => {
           </p>
         </div>
 
-        <nav className="mt-5 p-5 d-flex justify-content-center">
+        <nav className="mt-5 main-navigation p-5 d-flex justify-content-center">
           <ul className="navigation-list py-5">
             <li className="navigation-list-item">
               <Link to="/" onClick={handleMenuClosing}>
