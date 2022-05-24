@@ -23,6 +23,7 @@ import "./VoiceAssistant.css";
 const VoiceAssistant: FC<IVoiceAssitant> = ({
   enableFront,
   setEnableFront,
+  resumeRef,
 }: IVoiceAssitant) => {
   const {
     name: { responses },
@@ -289,6 +290,13 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
           text: "Scrolling Down by 100 pixel",
         });
       }
+    }
+    if (commandType === "downloadResume") {
+      setText("Downloading resume");
+      speak({
+        text: "Downloading resume",
+      });
+      if (null !== resumeRef.current) resumeRef.current.click();
     }
   };
 

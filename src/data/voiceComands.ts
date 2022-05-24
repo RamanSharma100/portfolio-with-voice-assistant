@@ -14,6 +14,7 @@ export interface IVoiceCommandsDataJSON {
   navigation: IVoiceCommandObject;
   questions: IVoiceCommandObject;
   scrolling: IVoiceCommandObject;
+  downloadResume: IVoiceCommandObject;
 }
 
 export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
@@ -69,7 +70,7 @@ export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
       "In this website * routes are available",
       "I am Voicey!. I am your personal voice assistant",
       "My name is Voicey!",
-      `I am a voice assistant, you can use me to ask questions about this website and with the help of me youcan control this website with your voice, you can also ask me question such as *`,
+      `I am a voice assistant, you can use me to ask questions about this website and with the help of me you can control this website with your voice, you can also ask me question such as who created you, what is your age, what is your job, how many pages are in this website,  and so on.`,
       "I am 1 week old",
       "I was created by Raman Sharma, a student of the Lovely Professional University and an owner of fullyworld web tutorials Youtube channel",
       "This website is made with typescript, bootstrap and reactjs",
@@ -88,5 +89,10 @@ export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
     commands: ["scroll down", "scroll up", "scroll to top", "scroll to bottom"],
     responses: ["Scrolling *"],
     actions: ["scroll"],
+  },
+  downloadResume: {
+    commands: ["download resume"],
+    responses: ["Downloading resume"],
+    actions: ["downloadResume"],
   },
 };

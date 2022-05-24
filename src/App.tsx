@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ToastContainer } from "react-toastify";
 import { recognition } from "./APIs/speechRecognitionAPI";
 import { Route, Routes } from "react-router-dom";
@@ -15,6 +15,8 @@ import "./App.css";
 import "./assets/styles/animations.css";
 
 export default function App() {
+  const resumeRef = useRef<HTMLAnchorElement>(null);
+
   if (!recognition) {
     return <div>This browser donot support</div>;
   }
@@ -30,9 +32,10 @@ export default function App() {
         <VoiceAssistant
           setEnableFront={setEnableFront}
           enableFront={enableFront}
+          resumeRef={resumeRef}
         />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage resumeRef={resumeRef} />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />

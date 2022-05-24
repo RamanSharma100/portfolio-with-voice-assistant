@@ -5,7 +5,7 @@ import MyImage from "../../assets/images/mypic.png";
 
 import "./HomePage.css";
 
-const HomePage: FC<IHomePage> = ({}: IHomePage) => {
+const HomePage: FC<IHomePage> = ({ resumeRef }: IHomePage) => {
   return (
     <div className="home-page row mx-0 w-100">
       <div className="home-page-left d-flex flex-column align-items-center  mt-5 px-5 py-5 col-12 col-md-6 px-0">
@@ -27,7 +27,12 @@ const HomePage: FC<IHomePage> = ({}: IHomePage) => {
         </p>
 
         <div className="col-md-12 d-flex flex-row gap-2 my-5 align-items-center px-5">
-          <a href="#" className="btn btn-outline-light">
+          <a
+            href={"../../assets/docs/Raman Sharma.pdf"}
+            ref={resumeRef}
+            download={true}
+            className="btn btn-outline-light"
+          >
             Download Resume
           </a>
           <a href="#" className="btn btn-light">

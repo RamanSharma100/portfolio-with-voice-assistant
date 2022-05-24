@@ -1,1 +1,3 @@
-export default interface IHomePage {}
+export default interface IHomePage {
+  resumeRef: React.RefObject<HTMLAnchorElement>;
+}
