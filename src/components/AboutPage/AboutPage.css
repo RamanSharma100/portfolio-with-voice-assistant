@@ -1,6 +1,5 @@
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 
 .aboutme {
@@ -40,7 +39,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  scroll-snap-align: center;
 }
 .aboutme .banner .myImage {
   position: absolute;

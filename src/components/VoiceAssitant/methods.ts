@@ -12,7 +12,10 @@ export const getRoutes = (): string[] => {
   return allPages;
 };
 
-export const getPageSections = (): void => {
+export const getPageSections = (): string[] => {
   const sections = document.querySelectorAll("div.row")[0].children;
-  console.log(sections);
+  const allSections = Array.from(sections).map(
+    (section: any) => section.id !== "" && section.id
+  );
+  return allSections;
 };

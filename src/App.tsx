@@ -37,6 +37,20 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
+        <footer
+          className="footer col-md-12 py-5 text-center text-white"
+          style={{ background: "#000" }}
+        >
+          <p>
+            &copy; copyright {new Date().getFullYear()} by{" "}
+            <a
+              href="https://www.ramasharma.tech"
+              className="text-decoration-none text-white"
+            >
+              Raman Sharma
+            </a>
+          </p>
+        </footer>
       </div>
     </>
   );

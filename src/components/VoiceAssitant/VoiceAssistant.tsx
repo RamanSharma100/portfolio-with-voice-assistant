@@ -15,7 +15,7 @@ import {
   handleSettingsClosing,
   handleSettingsOpening,
 } from "../Settings/methods";
-import { getPageSections, getRoutes } from "./methods";
+import { getRoutes } from "./methods";
 import checkCommands, { ICheckCommands } from "./checkCommands";
 
 import "./VoiceAssistant.css";
@@ -254,7 +254,41 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
       }
     }
     if (commandType === "scrolling") {
-      getPageSections();
+      const newCommand = commandName;
+      const cmd = newCommand
+        .replace("scroll", "")
+        .trim()
+        .replace("to", "")
+        .trim();
+      if (cmd === "top") {
+        window.scrollTo(0, 0);
+
+        setText("Scrolling to the top of the page");
+        speak({
+          text: "Scrolling to the top of the page",
+        });
+      }
+      if (cmd === "bottom") {
+        window.scrollTo(0, document.body.scrollHeight);
+        setText("Scrolling to the bottom of the page");
+        speak({
+          text: "Scrolling to the bottom of the page",
+        });
+      }
+      if (cmd === "up") {
+        window.scrollBy(0, -100);
+        setText("Scrolling up by 100 pixel");
+        speak({
+          text: "Scrolling up by 100 pixel",
+        });
+      }
+      if (cmd === "down") {
+        window.scrollBy(0, 100);
+        setText("Scrolling Down by 100 pixel");
+        speak({
+          text: "Scrolling Down by 100 pixel",
+        });
+      }
     }
   };
 

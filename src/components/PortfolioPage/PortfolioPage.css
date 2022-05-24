@@ -1,6 +1,5 @@
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y center;
 }
 .portfolio-page {
   position: relative;
@@ -44,7 +43,6 @@ html {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  scroll-snap-align: center;
 }
 .portfolio-page .banner .githubYoutubeLink {
   position: absolute;
@@ -190,7 +188,6 @@ html {
 
 /*portfolio posts*/
 .portfolio-page .portfolioPosts .postBox {
-  scroll-snap-align: end;
 }
 .portfolio-page .portfolioPosts .postBox .post {
   position: relative;
