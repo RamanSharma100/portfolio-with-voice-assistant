@@ -5,12 +5,14 @@ interface IVoiceCommandObject {
 }
 
 export interface IVoiceCommandsDataJSON {
+  stopCommands: IVoiceCommandObject;
+  openSettings: IVoiceCommandObject;
+  closeSettings: IVoiceCommandObject;
   name: IVoiceCommandObject;
   openNavigation: IVoiceCommandObject;
   closeNavigation: IVoiceCommandObject;
   navigation: IVoiceCommandObject;
   questions: IVoiceCommandObject;
-  stopCommands: IVoiceCommandObject;
 }
 
 export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
@@ -19,6 +21,17 @@ export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
     responses: ["Bye", "Goodbye", "See you later"],
     actions: ["stop"],
   },
+  openSettings: {
+    commands: ["settings open", "open settings"],
+    responses: ["Opening settings "],
+    actions: ["openSettings"],
+  },
+  closeSettings: {
+    commands: ["settings close", "close settings"],
+    responses: ["Closing settings"],
+    actions: ["closeSettings"],
+  },
+
   name: {
     commands: ["my name is ", "enter my name as ", " i am called", "this is "],
     responses: ["Hello!", "Hi!", "Hi there!", "Howdy!", "Greetings!"],

@@ -1,21 +1,24 @@
 import { FunctionComponent as FC, useEffect, useState, useRef } from "react";
 import { toast } from "react-toastify";
 import gsap, { Expo } from "gsap";
+import { useNavigate } from "react-router-dom";
 
 import { recognition } from "../../APIs/speechRecognitionAPI";
 import {
   IVoiceCommandsDataJSON,
   voiceCommandsDataJSON,
 } from "../../data/voiceComands";
+import IVoiceAssitant from "./IvoiceAssitant";
 import useSpeechSynthesis from "../../hooks/useSpeechSynthesis";
 import { handleMenuClosing, handleMenuOpening } from "../Navigation/methods";
-
-import IVoiceAssitant from "./IvoiceAssitant";
+import {
+  handleSettingsClosing,
+  handleSettingsOpening,
+} from "../Settings/methods";
+import { getRoutes } from "./methods";
 import checkCommands, { ICheckCommands } from "./checkCommands";
 
 import "./VoiceAssistant.css";
-import { useNavigate } from "react-router-dom";
-import { getRoutes } from "./methods";
 
 const VoiceAssistant: FC<IVoiceAssitant> = ({
   enableFront,
@@ -215,6 +218,20 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
             )} , are the routes`,
           });
         }
+      }
+      if (commandType === "openSettings") {
+        handleSettingsOpening();
+        setText((voiceCommandsDataJSON as any)[commandType].responses[0]);
+        speak({
+          text: (voiceCommandsDataJSON as any)[commandType].responses[0],
+        });
+      }
+      if (commandType === "closeSettings") {
+        handleSettingsClosing();
+        setText((voiceCommandsDataJSON as any)[commandType].responses[0]);
+        speak({
+          text: (voiceCommandsDataJSON as any)[commandType].responses[0],
+        });
       }
     }
   };

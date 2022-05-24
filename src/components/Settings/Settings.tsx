@@ -1,5 +1,4 @@
 import { FunctionComponent as FC } from "react";
-import gsap, { Power3 } from "gsap";
 
 import SettingsIcon from "../../assets/icons/settingsIcon.svg";
 import CloseIcon from "../../assets/icons/closeIcon.svg";
@@ -7,41 +6,14 @@ import CloseIcon from "../../assets/icons/closeIcon.svg";
 import ISettings from "./ISettings";
 
 import "./Settings.css";
+import { handleSettingsClosing, handleSettingsOpening } from "./methods";
 
 const Settings: FC<ISettings> = ({}) => {
-  const handleMenuOpening = () => {
-    gsap.to(".settings-back-container", {
-      duration: 0.3,
-      right: 0,
-      ease: Power3.easeInOut,
-    });
-    gsap.to(".settings-container", {
-      duration: 0.3,
-      delay: 0.1,
-      right: 0,
-      ease: Power3.easeIn,
-    });
-  };
-
-  const handleMenuClosing = () => {
-    gsap.to(".settings-container", {
-      duration: 0.3,
-      right: "100%",
-      ease: Power3.easeOut,
-    });
-    gsap.to(".settings-back-container", {
-      duration: 0.3,
-      right: "100%",
-      delay: 0.5,
-      ease: Power3.easeInOut,
-    });
-  };
-
   return (
     <>
       <div
         className="settings-tab-btn d-flex align-item-center justify-content-between"
-        onClick={handleMenuOpening}
+        onClick={handleSettingsOpening}
       >
         <img src={SettingsIcon} alt="settings" height={20} width={20} />
         <p className="my-0 d-flex align-items-center justify-content-center ms-1 fw-normal">
@@ -56,12 +28,50 @@ const Settings: FC<ISettings> = ({}) => {
         <div
           role="button"
           className="close-btn d-flex align-item-center justify-content-end me-5 cursor-pointer "
-          onClick={handleMenuClosing}
+          onClick={handleSettingsClosing}
         >
           <img src={CloseIcon} alt="close" height={30} width={30} />
           <p className="my-0 d-flex align-items-center justify-content-center ms-2 fw-normal">
             Close
           </p>
+        </div>
+
+        <div className="settings-content mt-5 px-5">
+          <div className="settings-content-header d-flex align-item-center justify-content-between">
+            <h2 className="my-0 d-flex align-items-center justify-content-center ms-1 fw-normal">
+              Settings
+            </h2>
+
+            <div className="settings-content-header-btn d-flex align-item-center justify-content-center">
+              <button className="btn btn-primary rounded-0">Save</button>
+              <button className="btn btn-danger ms-2 rounded-0">Reset</button>
+            </div>
+          </div>
+
+          <div className="settings-content-body">
+            <div className="settings-content-body-item">
+              <div className="settings-content-body-item-content">
+                <div className="d-flex align-tems-center justify-content-center gap-5 mt-5">
+                  <h3 className="my-0  ms-1 fw-normal ">Language</h3>
+                  <div className="d-flex align-items-center my-0  gap-2 justify-content-center">
+                    <input type="radio" checked value={0} disabled />{" "}
+                    <p className="my-0">English</p>
+                  </div>
+                </div>
+              </div>
+              <div className="settings-content-body-item-content">
+                <div className="d-flex align-tems-center justify-content-center gap-5 mt-5">
+                  <h3 className="my-0  ms-1 fw-normal ">
+                    Enable Voice Control
+                  </h3>
+                  <div className="d-flex align-items-center my-0  gap-2 justify-content-center">
+                    <input type="radio" checked value={0} disabled />{" "}
+                    <p className="my-0">Yes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
