@@ -15,7 +15,7 @@ import {
   handleSettingsClosing,
   handleSettingsOpening,
 } from "../Settings/methods";
-import { getRoutes } from "./methods";
+import { getPageSections, getRoutes } from "./methods";
 import checkCommands, { ICheckCommands } from "./checkCommands";
 
 import "./VoiceAssistant.css";
@@ -252,6 +252,9 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
           text: (voiceCommandsDataJSON as any)[commandType].responses[0],
         });
       }
+    }
+    if (commandType === "scrolling") {
+      getPageSections();
     }
   };
 

@@ -11,3 +11,8 @@ export const getRoutes = (): string[] => {
   );
   return allPages;
 };
+
+export const getPageSections = (): void => {
+  const sections = document.querySelectorAll("div.row")[0].children;
+  console.log(sections);
+};

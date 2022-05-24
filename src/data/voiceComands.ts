@@ -13,6 +13,7 @@ export interface IVoiceCommandsDataJSON {
   closeNavigation: IVoiceCommandObject;
   navigation: IVoiceCommandObject;
   questions: IVoiceCommandObject;
+  scrolling: IVoiceCommandObject;
 }
 
 export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
@@ -73,6 +74,19 @@ export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
       "I was created by Raman Sharma, a student of the Lovely Professional University and an owner of fullyworld web tutorials Youtube channel",
       "This website is made with typescript, bootstrap and reactjs",
     ],
-    actions: ["tellPages", "tellRoutes"],
+    actions: [
+      "tellPages",
+      "tellRoutes",
+      "tellName",
+      "tellJob",
+      "tellAge",
+      "tellCreator",
+      "tellAbout",
+    ],
+  },
+  scrolling: {
+    commands: ["scroll down", "scroll up", "scroll to top", "scroll to bottom"],
+    responses: ["Scrolling *"],
+    actions: ["scroll"],
   },
 };
