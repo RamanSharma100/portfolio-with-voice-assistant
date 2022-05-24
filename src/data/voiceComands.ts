@@ -10,9 +10,15 @@ export interface IVoiceCommandsDataJSON {
   closeNavigation: IVoiceCommandObject;
   navigation: IVoiceCommandObject;
   questions: IVoiceCommandObject;
+  stopCommands: IVoiceCommandObject;
 }
 
 export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
+  stopCommands: {
+    commands: ["stop", "exit", "quit"],
+    responses: ["Bye", "Goodbye", "See you later"],
+    actions: ["stop"],
+  },
   name: {
     commands: ["my name is ", "enter my name as ", " i am called", "this is "],
     responses: ["Hello!", "Hi!", "Hi there!", "Howdy!", "Greetings!"],

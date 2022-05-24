@@ -145,6 +145,12 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
     const { commandAction, commandType, commandName }: ICheckCommands =
       checkCommands(command);
     if (commandAction && commandName) {
+      if (commandType === "stopCommands") {
+        setIsMuted(true);
+        setIsStarted(false);
+        setText("stopped taking commands! Thank you!");
+        speak({ text: "stopped taking commands! Thank you!" });
+      }
       if (commandType === "name" && enableFront) {
         setName(command.replace(commandName, "").trim());
         handleEnter(command.replace(commandName, "").trim());
@@ -190,6 +196,25 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
             (voiceCommandsDataJSON as any)[commandType].responses[0]
           } ${page} page`,
         });
+      }
+      if (commandType === "questions") {
+        if (commandName.includes("pages") || commandName.includes("routes")) {
+          const routes: string[] = getRoutes();
+          setText(
+            `${(voiceCommandsDataJSON as any)[commandType].responses[
+              commandName.includes("routes") ? 1 : 0
+            ].replace("*", routes.length)}. Home ${routes.join(
+              ", "
+            )} , are the routes`
+          );
+          speak({
+            text: `${(voiceCommandsDataJSON as any)[commandType].responses[
+              commandName.includes("routes") ? 1 : 0
+            ].replace("*", routes.length)}. Home ${routes.join(
+              ", "
+            )} , are the routes`,
+          });
+        }
       }
     }
   };
