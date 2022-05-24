@@ -217,6 +217,25 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
               ", "
             )} , are the routes`,
           });
+        } else if (
+          (voiceCommandsDataJSON as any)["questions"].commands.includes(
+            commandName
+          )
+        ) {
+          setText(
+            (voiceCommandsDataJSON as any)["questions"].responses[
+              (voiceCommandsDataJSON as any)["questions"].commands.indexOf(
+                commandName
+              )
+            ]
+          );
+          speak({
+            text: (voiceCommandsDataJSON as any)["questions"].responses[
+              (voiceCommandsDataJSON as any)["questions"].commands.indexOf(
+                commandName
+              )
+            ].replace("*", (voiceCommandsDataJSON as any)["questions"]),
+          });
         }
       }
       if (commandType === "openSettings") {
