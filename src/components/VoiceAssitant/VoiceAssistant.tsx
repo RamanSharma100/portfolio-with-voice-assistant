@@ -330,10 +330,10 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
         });
       } else {
         setText(
-          "Command not found. Please select command from command headings which is given in commands table. to open commands table please say, show commands"
+          "Command not found. Please select command from commands which is given in commands table. to open commands table please say, show commands"
         );
         speak({
-          text: "Command not found. Please select command from command headings which is given in commands table. to open commands table please say, show commands",
+          text: "Command not found. Please select command from commands which is given in commands table. to open commands table please say, show commands",
         });
       }
     }
