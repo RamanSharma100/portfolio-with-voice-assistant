@@ -2,6 +2,7 @@ interface IVoiceCommandObject {
   commands: string[];
   responses: string[];
   actions: string[];
+  info: string;
 }
 
 export interface IVoiceCommandsDataJSON {
@@ -15,44 +16,59 @@ export interface IVoiceCommandsDataJSON {
   questions: IVoiceCommandObject;
   scrolling: IVoiceCommandObject;
   downloadResume: IVoiceCommandObject;
+  openCommands: IVoiceCommandObject;
+  explainCommands: IVoiceCommandObject;
 }
 
 export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
+  explainCommands: {
+    commands: ["explain command "],
+    responses: ["This command is used to *"],
+    actions: ["explainCommands"],
+    info: "Explains the particular command",
+  },
   stopCommands: {
     commands: ["stop", "exit", "quit"],
     responses: ["Bye", "Goodbye", "See you later"],
     actions: ["stop"],
+    info: "Stops Listening voice commands",
   },
   openSettings: {
     commands: ["settings open", "open settings"],
     responses: ["Opening settings "],
     actions: ["openSettings"],
+    info: "Opens the settings",
   },
   closeSettings: {
     commands: ["settings close", "close settings"],
     responses: ["Closing settings"],
     actions: ["closeSettings"],
+    info: "Closes the settings",
   },
 
   name: {
     commands: ["my name is ", "enter my name as ", " i am called", "this is "],
     responses: ["Hello!", "Hi!", "Hi there!", "Howdy!", "Greetings!"],
     actions: ["setName"],
+    info: "Sets the name",
   },
   openNavigation: {
     commands: ["open navigation menu", "open menu"],
     responses: ["Opening navigation menu!"],
     actions: ["openMenu"],
+    info: "Opens the navigation menu",
   },
   closeNavigation: {
     commands: ["close navigation menu", "close menu"],
     responses: ["Closing navigation menu!"],
     actions: ["closeMenu"],
+    info: "Closes the navigation menu",
   },
   navigation: {
     commands: ["navigate to ", "go to ", "show me ", "move to "],
     responses: ["Navigated to "],
     actions: ["navigation"],
+    info: "Navigates to a page",
   },
   questions: {
     commands: [
@@ -84,15 +100,31 @@ export const voiceCommandsDataJSON: IVoiceCommandsDataJSON = {
       "tellCreator",
       "tellAbout",
     ],
+    info: "Asks questions about the website",
   },
   scrolling: {
     commands: ["scroll down", "scroll up", "scroll to top", "scroll to bottom"],
     responses: ["Scrolling *"],
     actions: ["scroll"],
+    info: "Scrolls the page",
   },
   downloadResume: {
     commands: ["download resume"],
     responses: ["Downloading resume"],
     actions: ["downloadResume"],
+    info: "Downloads the resume",
+  },
+  openCommands: {
+    commands: [
+      "open commands",
+      "open command list",
+      "show commands",
+      "show command list",
+      "show commands list",
+      "open commands list",
+    ],
+    responses: ["Opening commands list"],
+    actions: ["openCommands"],
+    info: "Opens the commands list",
   },
 };

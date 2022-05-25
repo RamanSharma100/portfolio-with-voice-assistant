@@ -3,6 +3,8 @@ import { ToastContainer } from "react-toastify";
 import { recognition } from "./APIs/speechRecognitionAPI";
 import { Route, Routes } from "react-router-dom";
 
+import { voiceCommandsDataJSON } from "./data/voiceComands";
+
 import HomePage from "./components/HomePage/HomePage";
 import VoiceAssistant from "./components/VoiceAssitant/VoiceAssistant";
 import Navigation from "./components/Navigation/Navigation";
@@ -10,6 +12,7 @@ import Settings from "./components/Settings/Settings";
 import PortfolioPage from "./components/PortfolioPage/PortfolioPage";
 import AboutPage from "./components/AboutPage/AboutPage";
 import ContactPage from "./components/ContactPage/ContactPage";
+import VoiceCommandsPage from "./components/VoiceCommandsPage/VoiceCommandsPage";
 
 import "./App.css";
 import "./assets/styles/animations.css";
@@ -39,6 +42,10 @@ export default function App() {
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route
+            path="/commands"
+            element={<VoiceCommandsPage commands={voiceCommandsDataJSON} />}
+          />
         </Routes>
         <footer
           className="footer col-md-12 py-5 text-center text-white"

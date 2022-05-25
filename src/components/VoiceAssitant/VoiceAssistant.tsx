@@ -298,6 +298,45 @@ const VoiceAssistant: FC<IVoiceAssitant> = ({
       });
       if (null !== resumeRef.current) resumeRef.current.click();
     }
+    if (commandType === "openCommands") {
+      setText("Opening commands List");
+      speak({
+        text: "Opening commands List",
+      });
+      navigate("/commands");
+    }
+    if (commandType === "explainCommands") {
+      const cmdName = command
+        .replace("explain command", "")
+        .replace(".", "")
+        .trim();
+      const { commandName: cmd, commandType: cType } = checkCommands(cmdName);
+      if (cmd) {
+        setText(
+          (voiceCommandsDataJSON as any)[
+            "explainCommands"
+          ].responses[0].replace(
+            "*",
+            (voiceCommandsDataJSON as any)[cType].info
+          )
+        );
+        speak({
+          text: (voiceCommandsDataJSON as any)[
+            "explainCommands"
+          ].responses[0].replace(
+            "*",
+            (voiceCommandsDataJSON as any)[cType].info
+          ),
+        });
+      } else {
+        setText(
+          "Command not found. Please select command from command headings which is given in commands table. to open commands table please say, show commands"
+        );
+        speak({
+          text: "Command not found. Please select command from command headings which is given in commands table. to open commands table please say, show commands",
+        });
+      }
+    }
   };
 
   recognition.onend = () => {

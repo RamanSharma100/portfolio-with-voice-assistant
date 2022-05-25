@@ -25,11 +25,11 @@ const checkCommands = (command: string): ICheckCommands => {
       break;
     }
   }
-  console.log({
-    commandName: cmdName,
-    commandType: cmdType,
-    commandAction: (voiceCommandsDataJSON as any)[cmdType]?.actions[0],
-  });
+  // console.log({
+  //   commandName: cmdName,
+  //   commandType: cmdType,
+  //   commandAction: (voiceCommandsDataJSON as any)[cmdType]?.actions[0],
+  // });
 
   return {
     commandName: cmdName,
